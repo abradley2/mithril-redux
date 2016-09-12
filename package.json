@@ -1,0 +1,31 @@
+{
+  "name": "mithril-redux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/index.html",
+  "scripts": {
+    "build-scripts": "browserify src/scripts/main.jsx -t babelify -o public/dist/js/main.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abradley2/mithril-redux.git"
+  },
+  "author": "Tony Bradley",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/abradley2/mithril-redux/issues"
+  },
+  "homepage": "https://github.com/abradley2/mithril-redux#readme",
+  "dependencies": {
+    "mithril": "^0.2.5",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "watchify": "^3.7.0"
+  }
+}

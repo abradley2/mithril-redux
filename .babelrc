@@ -1,0 +1,12 @@
+{
+  "presets": ["es2015"],
+  "plugins": [
+	  ["transform-react-jsx", {
+		  "pragma": "m"
+	  }]
+  ],
+  "ignore": [
+    "foo.js",
+    "bar/**/*.js"
+  ]
+}
