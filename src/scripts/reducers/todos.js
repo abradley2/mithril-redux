@@ -21,8 +21,8 @@ export default function (state = List([]), action) {
 			)
 
 		case REMOVE:
-			return state.filter(todo => {
-				return todo.id !== action.todoId
+			return state.filter((todo) => {
+				return todo.get('id') !== action.todoId
 			})
 
 		case EDIT_TITLE:
@@ -34,7 +34,7 @@ export default function (state = List([]), action) {
 			)
 
 		case TOGGLE_COMPLETED:
-			var idx = state.indexOf(todo => todo.id === action.todoId)
+			var idx = state.indexOf(todo => todo.get('id') === action.todoId)
 
 			return state.set(
 				idx,

@@ -9,6 +9,8 @@ import {
 	TOGGLE_COMPLETED
 } from '../actions/TodoActions'
 
+import Todo from '../components/Todo'
+
 function TodoListController (args) {
 	this.actions = bindActionCreators(creators, store.dispatch)
 }
@@ -25,7 +27,19 @@ function TodoListView (ctrl, args) {
 		</div>
 		<div class='todos'>
 		{todos.map(todo => {
-			return <h3>{todo.title}</h3>
+			return <Todo
+				todo={todo}
+				onEditTitle={title => {
+					ctrl.actions[EDIT_TITLE](todo.id, title)
+				}}
+				onToggleCompleted={() => {
+					ctrl.actions[TOGGLE_COMPLETED](todo.id)
+				}}
+				onRemoveClick={() => {
+					console.log('remove clicked!')
+					ctrl.actions[REMOVE](todo.id)
+				}}
+			/>
 		})}
 		</div>
 	</div>
