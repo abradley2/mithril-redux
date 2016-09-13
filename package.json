@@ -5,7 +5,7 @@
   "main": "public/index.html",
   "scripts": {
     "build-scripts": "browserify src/scripts/main.js --extension=jsx -t babelify -o public/main.bundle.js",
-    "watch-scripts": "watchify src/scripts/main.js --debug --extension=jsx -t babelify -o public/bundle.js"
+    "watch-scripts": "watchify src/scripts/main.js --debug --extension=jsx -t babelify -o public/main.bundle.js"
   },
   "repository": {
     "type": "git",
