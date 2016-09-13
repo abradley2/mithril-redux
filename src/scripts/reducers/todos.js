@@ -26,7 +26,7 @@ export default function (state = List([]), action) {
 			})
 
 		case EDIT_TITLE:
-			var idx = state.indexOf(todo => todo.id === action.todoId)
+			var idx = state.indexOf(todo => todo.get('id') === action.todoId)
 			
 			return state.set(
 				idx, 

@@ -30,13 +30,13 @@ function TodoListView (ctrl, args) {
 			return <Todo
 				todo={todo}
 				onEditTitle={title => {
+					console.log('edit title of ',todo.id, title)
 					ctrl.actions[EDIT_TITLE](todo.id, title)
 				}}
 				onToggleCompleted={() => {
 					ctrl.actions[TOGGLE_COMPLETED](todo.id)
 				}}
 				onRemoveClick={() => {
-					console.log('remove clicked!')
 					ctrl.actions[REMOVE](todo.id)
 				}}
 			/>
