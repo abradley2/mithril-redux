@@ -4,8 +4,8 @@
   "description": "",
   "main": "public/index.html",
   "scripts": {
-    "build-scripts": "browserify src/scripts/main.jsx -t babelify -o public/dist/js/main.js",
-    "test": "test"
+    "build-scripts": "browserify src/scripts/main.js --extension=jsx -t babelify -o public/main.js",
+    "watch-scripts": "watchify src/scripts/main.js --debug --extension=jsx -t babelify -o public/main.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/abradley2/mithril-redux#readme",
   "dependencies": {
+    "immutable": "^3.8.1",
     "mithril": "^0.2.5",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "shortid": "^2.2.6"
   },
   "devDependencies": {
     "babel-plugin-transform-react-jsx": "^6.8.0",
