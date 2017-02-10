@@ -1,33 +1,27 @@
 {
   "name": "mithril-redux",
   "version": "1.0.0",
-  "description": "",
-  "main": "public/index.html",
-  "scripts": {
-    "build-scripts": "browserify src/scripts/main.js --extension=jsx -t babelify -o public/main.bundle.js",
-    "watch-scripts": "watchify src/scripts/main.js --debug --extension=jsx -t babelify -o public/main.bundle.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abradley2/mithril-redux.git"
-  },
-  "author": "Tony Bradley",
+  "description": "A Mithril boilerplate for fast development",
+  "main": "app.js",
+  "repository": "https://github.com/abradley2/mithril-redux",
+  "author": "Tony Bradley <antbradley91@gmail.com>",
   "license": "Unlicense",
-  "bugs": {
-    "url": "https://github.com/abradley2/mithril-redux/issues"
+  "scripts": {
+    "start-dev": "budo ./src/main.js:main.bundle.js --pushstate --live --dir ./public"
   },
-  "homepage": "https://github.com/abradley2/mithril-redux#readme",
   "dependencies": {
-    "immutable": "^3.8.1",
-    "mithril": "^0.2.5",
-    "redux": "^3.6.0",
-    "shortid": "^2.2.6"
+    "barracks": "^9.3.0",
+    "hyperx": "^2.0.5",
+    "mithril": "^1.0.1",
+    "tachyons": "^4.6.2"
   },
   "devDependencies": {
-    "babel-plugin-transform-react-jsx": "^6.8.0",
-    "babel-preset-es2015": "^6.14.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.1.0",
-    "watchify": "^3.7.0"
+    "browserify": "^14.0.0",
+    "budo": "^9.4.7",
+    "envify": "^4.0.0",
+    "sheetify": "^6.0.1",
+    "sheetify-cssnext": "^1.0.7",
+    "standard": "^8.6.0",
+    "tape": "^4.6.3"
   }
 }
