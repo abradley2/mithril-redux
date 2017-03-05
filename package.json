@@ -2,7 +2,7 @@
   "name": "mithril-redux",
   "version": "1.0.0",
   "description": "A Mithril boilerplate for fast development",
-  "main": "app.js",
+  "main": "src/main.js",
   "repository": "https://github.com/abradley2/mithril-redux",
   "author": "Tony Bradley <antbradley91@gmail.com>",
   "license": "Unlicense",
