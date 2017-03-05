@@ -1,40 +1,40 @@
 const m = require('mithril')
-const html = require('hyperx')(m)
+const i = require('icepick')
+const hyperx = require('hyperx')
+const store = require('../store')
+const html = hyperx(m)
 
-const homeModel = {
-  namespace: 'home',
-  state: {
-    message: 'Hello World!'
-  },
-  effects: {},
-  reducers: {
-    editMesssage: function (state, data) {
-      return Object.assign(state, {
-        message: data.message
-      })
-    }
-  }
+const initialState = {
+  message: 'Hello World!'
 }
 
-function homeController (send) {
-  console.log('init controller with: ', send)
-  return {
-    editMessage: function (message) {
-      send('home:editMessage', {message: message})
-    }
+store.addReducer('home', function (prevState, action) {
+  switch (action.type) {
+    case 'home/editMessage':
+      return i.set(prevState, 'message', action.message)
+
+    default:
+      return prevState || initialState
   }
+})
+
+function editMessage (message) {
+  store.dispatch({
+    type: 'home/editMessage',
+    message: message
+  })
 }
 
-function homeView (vnode) {
-  console.log(this, vnode)
+function homeView () {
+  const state = store.getState()
+
   return html`<div>
-    <h3>Hello World!</h3>
-    <h3>${this.store.message || 'test'}</h3>
+    <input
+      value=${state.home.message}
+      oninput=${m.withAttr('value', editMessage)}
+    />
+    <h3>${state.home.message}</h3>
   </div>`
 }
 
-module.exports = {
-  model: homeModel,
-  controller: homeController,
-  view: homeView
-}
+module.exports = {view: homeView}

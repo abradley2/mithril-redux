@@ -7,21 +7,34 @@
   "author": "Tony Bradley <antbradley91@gmail.com>",
   "license": "Unlicense",
   "scripts": {
-    "start-dev": "budo ./src/main.js:main.bundle.js --pushstate --live --dir ./public"
+    "start": "budo ./src/main.js:main.bundle.js --pushstate --live --dir ./public",
+    "build": "browserify ./src/main.js -g uglifyify -o ./public/main.bundle.js"
+  },
+  "browserify": {
+    "transform": [
+      "sheetify/transform",
+      "hyperxify",
+      "es2020"
+    ]
   },
   "dependencies": {
-    "barracks": "^9.3.0",
     "hyperx": "^2.0.5",
+    "icepick": "^1.3.0",
+    "insert-css": "^2.0.0",
     "mithril": "^1.0.1",
+    "redux": "^3.6.0",
+    "reselect": "^2.5.4",
     "tachyons": "^4.6.2"
   },
   "devDependencies": {
-    "browserify": "^14.0.0",
+    "browserify": "^14.1.0",
     "budo": "^9.4.7",
     "envify": "^4.0.0",
+    "es2020": "^1.1.9",
+    "hyperxify": "^2.0.1",
     "sheetify": "^6.0.1",
-    "sheetify-cssnext": "^1.0.7",
-    "standard": "^8.6.0",
-    "tape": "^4.6.3"
+    "standard": "^9.0.0",
+    "uglifyify": "^3.0.4",
+    "watchify": "^3.9.0"
   }
 }
