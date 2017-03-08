@@ -4,17 +4,15 @@ const hyperx = require('hyperx')
 const store = require('../store')
 const html = hyperx(m)
 
-const initialState = {
-  message: 'Hello World!'
-}
-
 store.addReducer('home', function (prevState, action) {
   switch (action.type) {
     case 'home/editMessage':
       return i.set(prevState, 'message', action.message)
 
     default:
-      return prevState || initialState
+      return prevState || {
+        message: 'Hello World'
+      }
   }
 })
 
