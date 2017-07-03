@@ -1,35 +1,52 @@
 {
   "name": "mithril-redux",
   "version": "1.0.0",
-  "description": "A Mithril boilerplate for fast development",
+  "description": "A Mithril boilerplate for lightning fast development",
   "main": "src/main.js",
   "repository": "https://github.com/abradley2/mithril-redux",
   "author": "Tony Bradley <antbradley91@gmail.com>",
   "license": "Unlicense",
   "scripts": {
-    "start": "budo ./src/main.js:main.bundle.js --pushstate --live --dir ./public",
-    "build": "browserify ./src/main.js -g uglifyify -o ./public/main.bundle.js"
+    "start": "NODE_ENV=development budo ./src/main.js:dist/bundle.min.js --pushstate --live --dir ./",
+    "build": "NODE_ENV=production browserify ./src/main.js -g uglifyify -o ./dist/bundle.min.js"
   },
   "browserify": {
     "transform": [
       "sheetify/transform",
-      "hyperxify",
-      "es2020"
+      "babelify",
+      "envify"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ],
+    "plugins": [
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "m"
+        }
+      ]
     ]
   },
   "dependencies": {
-    "hyperx": "^2.0.5",
     "icepick": "^1.3.0",
     "mithril": "^1.0.1",
     "redux": "^3.6.0",
     "reselect": "^2.5.4"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7.3.0",
     "browserify": "^14.1.0",
     "budo": "^9.4.7",
+    "deep-equal": "^1.0.1",
     "envify": "^4.0.0",
-    "es2020": "^1.1.9",
-    "hyperxify": "^2.0.1",
+    "localforage": "^1.5.0",
+    "redux-logger": "^3.0.6",
     "sheetify": "^6.0.1",
     "standard": "^9.0.0",
     "uglifyify": "^3.0.4",

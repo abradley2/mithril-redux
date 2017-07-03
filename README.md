@@ -8,7 +8,6 @@ The bundle output by `npm run build` is < 14kb gzipped!
 From the package.json:
 ```
 {
-  "hyperx": "^2.0.5",
   "icepick": "^1.3.0",
   "mithril": "^1.0.1",
   "redux": "^3.6.0",
@@ -32,7 +31,5 @@ of constantly doing `Object.assign(..)` in your reducers.
 **reselect**
 A simple way to make selectors from your state that are memoized.
 
-**hyperx**  
-Now that Template literals are _a thing_ we don't need JSX anymore. With hyperxify
-this transform is done at compile time so you don't lose any speed!
+
 

@@ -1,38 +1,39 @@
+/** @jsx m */
 const m = require('mithril')
-const i = require('icepick')
-const hyperx = require('hyperx')
+const {set} = require('icepick')
 const store = require('../store')
-const html = hyperx(m)
+
+const initialState = {
+  message: 'Hello World! Again1'
+}
 
 store.addReducer('home', function (prevState, action) {
   switch (action.type) {
-    case 'home/editMessage':
-      return i.set(prevState, 'message', action.message)
+    case 'home:editMessage':
+      return set(prevState, 'message', action.message)
 
     default:
-      return prevState || {
-        message: 'Hello World'
-      }
+      return prevState || initialState
   }
 })
-
-function editMessage (message) {
-  store.dispatch({
-    type: 'home/editMessage',
-    message: message
-  })
-}
 
 function homeView () {
   const state = store.getState()
 
-  return html`<div>
+  window.console.log('render')
+
+  return <div>
     <input
-      value=${state.home.message}
-      oninput=${m.withAttr('value', editMessage)}
+      value={state.home.message}
+      oninput={(e) => {
+        store.dispatch({
+          type: 'home:editMessage',
+          message: e.target.value
+        })
+      }}
     />
-    <h3>${state.home.message}</h3>
-  </div>`
+    <h3>{state.home.message}</h3>
+  </div>
 }
 
 module.exports = {view: homeView}

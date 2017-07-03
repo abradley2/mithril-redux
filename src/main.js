@@ -4,6 +4,14 @@ const home = require('./modules/home')
 
 store.init()
 
-m.route(document.getElementById('app'), '/', {
-  '/': home
-})
+function startApp () {
+  m.route(document.getElementById('app'), '/', {
+    '/': home
+  })
+}
+
+if (process.env.NODE_ENV === 'development') {
+  require('./utils/persist')(store, startApp)
+} else {
+  startApp()
+}
