@@ -36,7 +36,6 @@ function persist (store, done) {
 
 function subscribeToStore (store) {
   const writer = bottleneck(function () {
-    window.console.log('writing')
     localForage.setItem('savedState', JSON.stringify(store.getState()))
   }, 500)
   store.subscribe(writer)
