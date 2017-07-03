@@ -5,30 +5,38 @@ function persist (store, done) {
   let shouldReset = false
   store.dispatch({ type: '$START' })
 
-  localForage.getItem('initialState', function (err, value) {
-    if (err) window.console.error(err)
-    shouldReset = !equals(JSON.parse(value || '{}'), store.getState())
+  localForage.getItem('initialState')
+    .then((value) => {
+      shouldReset = !equals(JSON.parse(value || '{}'), store.getState())
 
-    if (shouldReset) {
-      const newInitialState = JSON.stringify(store.getState())
+      if (shouldReset) {
+        const newInitialState = JSON.stringify(store.getState())
 
-      localForage.setItem('initialState', newInitialState)
-      localForage.setItem('savedState', newInitialState, done)
-      subscribeToStore(store)
-    } else {
-      localForage.getItem('savedState', function (err, value) {
-        if (err) window.console.error(err)
-        store.dispatch({type: '$LOAD', state: JSON.parse(value)})
-        subscribeToStore(store)
-        done()
-      })
-    }
-  })
+        Promise.all([
+          localForage.setItem('initialState', newInitialState),
+          localForage.setItem('savedState', newInitialState)
+        ])
+          .then(() => {
+            subscribeToStore(store)
+            done()
+          })
+          .catch(err => done(err))
+      } else {
+        localForage.getItem('savedState')
+          .then((value) => {
+            store.dispatch({type: '$LOAD', state: JSON.parse(value)})
+            subscribeToStore(store)
+            done()
+          })
+          .catch(err => done(err))
+      }
+    })
+    .catch(err => done(err))
 }
 
 function subscribeToStore (store) {
   const writer = bottleneck(function () {
-    window.console.log('writing: ', store.getState())
+    window.console.log('writing')
     localForage.setItem('savedState', JSON.stringify(store.getState()))
   }, 500)
   store.subscribe(writer)

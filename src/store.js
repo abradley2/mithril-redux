@@ -21,8 +21,12 @@ const store = {
 
     let composeEnhancers = compose
     if (process.env.NODE_ENV === 'development') {
+      const loggerSettings = {
+        diff: true,
+        collapsed: true
+      }
       composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-      middlewares.push(require('redux-logger').createLogger({diff: true}))
+      middlewares.push(require('redux-logger').createLogger(loggerSettings))
     }
 
     const reduxStore = createStore(

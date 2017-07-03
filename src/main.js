@@ -4,7 +4,8 @@ const home = require('./modules/home')
 
 store.init()
 
-function startApp () {
+function startApp (err) {
+  if (err) window.console.error(err)
   m.route(document.getElementById('app'), '/', {
     '/': home
   })

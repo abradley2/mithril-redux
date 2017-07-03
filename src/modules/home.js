@@ -4,7 +4,7 @@ const {set} = require('icepick')
 const store = require('../store')
 
 const initialState = {
-  message: 'Hello World! Again1'
+  message: 'Hello World!'
 }
 
 store.addReducer('home', function (prevState, action) {
@@ -19,8 +19,6 @@ store.addReducer('home', function (prevState, action) {
 
 function homeView () {
   const state = store.getState()
-
-  window.console.log('render')
 
   return <div>
     <input
