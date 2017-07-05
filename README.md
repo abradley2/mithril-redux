@@ -5,31 +5,27 @@ A brilliant alternative to React + Redux
 The bundle output by `npm run build` is < 14kb gzipped!
 
 # Dependencies Walkthrough
-From the package.json:
-```
-{
-  "icepick": "^1.3.0",
-  "mithril": "^1.0.1",
-  "redux": "^3.6.0",
-  "reselect": "^2.5.4"
-}
-```
 
-**mithril**  
+**Mithril**  
 Smaller than React, extremely fast, and batteries included (routing and xhr!).
 
-**redux**  
-Dead simple state management that. Of course, since we're using Mithril we don't
-have to have everything in the main store, and can just use models for convenience.
-It's the best of both worlds, really.
+**Redux**  
+Dead simple state management. Of course, Mithril's natural state management is
+still available if Redux is too much for the use case.
 
-**icepick**  
+**Icepick**  
 Nice and small bag of some functions that make it easy to treat object manipulations
 as if they were dealing with immutable data. This jumps over all the hurdles
 of constantly doing `Object.assign(..)` in your reducers.
 
-**reselect**
-A simple way to make selectors from your state that are memoized.
+**Reselect**  
+A simple way to make performant selectors for your state tree..
 
+**Tachyons**  
+For rapid styling and prototyping of the interface.
 
+**Sheetify**  
+Simple library that allows you to inject imported css into the head. Much nicer
+than awkward Webpack loaders. Useful here for any css that isn't covered by
+Tachyons.
 
