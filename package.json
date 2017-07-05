@@ -12,8 +12,8 @@
   },
   "browserify": {
     "transform": [
-      "sheetify/transform",
       "babelify",
+      "sheetify/transform",
       "envify"
     ]
   },
