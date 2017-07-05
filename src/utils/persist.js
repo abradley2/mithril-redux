@@ -1,7 +1,9 @@
 const equals = require('deep-equal')
 const localForage = require('localforage')
 
-function persist (store, done) {
+function persist (appName, store, done) {
+  localForage.config({ name: appName })
+
   let shouldReset = false
   store.dispatch({ type: '$START' })
 
