@@ -1,11 +1,18 @@
 const m = require('mithril')
 const {createStore, combineReducers, compose, applyMiddleware} = require('redux')
 
-const store = {
-  // add additional reducers here
-  reducers: {
+// add additional reducers here
+const reducers = {
 
-  },
+}
+
+// Add additional middleware here
+const middlewares = [
+
+]
+
+const store = {
+  reducers,
 
   addReducer: function (name, func) {
     store.reducers[name] = func
@@ -13,11 +20,6 @@ const store = {
 
   init: function () {
     const reduce = combineReducers(store.reducers)
-
-    // add additional middleware here
-    const middlewares = [
-
-    ]
 
     let composeEnhancers = compose
     if (process.env.NODE_ENV === 'development') {
