@@ -1,11 +1,28 @@
 /** @jsx m */
 const m = require('mithril')
 
-function Button () {
+function Button (vnode) {
+  const {
+    onclick,
+    buttonClass = '',
+    buttonType = 'default'
+  } = vnode.attrs
+
+  const buttonStyles = {
+    default: ' white bg-gray ',
+    primary: ' white bg-green ',
+    secondary: ' white bg-pink '
+  }
+
   return <span
-    class='dib tc pa3 lh-solid f3 fw7 white bg-green pointer br2 shadow-1'
+    class={
+      'dib tc pa2 lh-solid f3 fw3 pointer br2 shadow-1 ttu tracked ma1 ' +
+      buttonStyles[buttonType] +
+      buttonClass
+    }
+    onclick={onclick}
   >
-    Click Me!
+    {vnode.children}
   </span>
 }
 

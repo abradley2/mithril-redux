@@ -46,7 +46,9 @@ function homeView () {
 
     {divider()}
 
-    <Button />
+    <Button>Default</Button>
+    <Button buttonType='primary'>Primary</Button>
+    <Button buttonType='secondary'>Secondary</Button>
   </div>
 }
 
